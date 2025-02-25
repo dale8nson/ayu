@@ -1,0 +1,10 @@
+[clean]
+# The output dir for all final assets.
+dist = "dist"
+# Optionally perform a cargo clean.
+cargo = false
+
+[tools]
+# Default tailwindcss-cli version to download.
+tailwindcss = "4.0.8"
+
