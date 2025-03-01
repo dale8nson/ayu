@@ -7,3 +7,5 @@ edition = "2021"
 console_error_panic_hook = "0.1.7"
 leptos = { version = "0.7.7", features = ["csr"] }
 leptos_meta = "0.7.7"
+libm = "0.2.11"
+nalgebra = "=0.33.2"
