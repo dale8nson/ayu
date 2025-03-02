@@ -165,3 +165,11 @@ pub fn secondary_col(hex_color: &str, contrast_type: &SecondaryColorType) -> Str
     let (r, g, b) = oklab_to_srgb(l, a, b);
     format!("#{:02x}{:02x}{:02x}", r, g, b)
 }
+
+pub fn tone (color: &String, ratio: f64, direction: &SecondaryColorType ) -> String {
+    let (r, g, b) = css_to_rgb(&color[..]);
+    let (l, a, b) = srgb_to_oklab(r, g, b);
+    let l = l_contrast(l, ratio,&direction );
+    let (r, g, b) = oklab_to_srgb(l, a, b);
+    format!("#{:02x}{:02x}{:02x}", r, g, b)
+}  

@@ -18,6 +18,7 @@
     --text-5xl--line-height: 1;
     --font-weight-normal: 400;
     --font-weight-bold: 700;
+    --radius-2xl: 1rem;
     --default-font-family: var(--font-sans);
     --default-font-feature-settings: var(--font-sans--font-feature-settings);
     --default-font-variation-settings: var(
@@ -219,11 +220,17 @@
   .h-\[4rem\] {
     height: 4rem;
   }
+  .h-\[30rem\] {
+    height: 30rem;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
   .w-3\/4 {
     width: calc(3/4 * 100%);
+  }
+  .w-\[22\.5rem\] {
+    width: 22.5rem;
   }
   .w-full {
     width: 100%;
@@ -251,6 +258,9 @@
   }
   .gap-16 {
     gap: calc(var(--spacing) * 16);
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
   }
   .rounded-\[2rem\] {
     border-radius: 2rem;
