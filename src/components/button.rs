@@ -4,7 +4,7 @@ use leptos::prelude::*;
 #[component]
 pub fn Button(children: Children, #[prop(optional)] class: String) -> impl IntoView {
     view! {
-        <button class=format!("w-3/4 h-[4rem] text-base font-normal py-2 px-2 rounded-[2rem] {}", class)>
+        <button class=format!("flex flex-row justify-center items-center w-3/4 h-[4rem] text-base text-center font-normal py-2 px-2 rounded-[2rem] {}", class)>
             {children()}
         </button>
     }
@@ -79,7 +79,7 @@ pub fn TextButton(children: Children, #[prop(optional)] class: String) -> impl I
     let (btn, set_btn) = signal(false);
 
     view! {
-        <button on:mousedown = move |_| set_btn.set(true) on:mouseup = move |_| set_btn.set(false) class:hover:text-white = move || !btn.get() class=format!(" text-base font-normal text-[#aaa] hover:border-white hover:text-white {}", class)>
+        <button on:mousedown = move |_| set_btn.set(true) on:mouseup = move |_| set_btn.set(false) class:hover:text-white = move || !btn.get() class=format!("text-center w-3/4 text-base font-normal text-[#aaa] hover:border-white hover:text-white {}", class)>
         {children()}
         </button>
     }
