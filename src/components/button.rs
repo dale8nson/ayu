@@ -11,11 +11,53 @@ pub fn Button(children: Children, #[prop(optional)] class: String) -> impl IntoV
 }
 
 #[component]
-pub fn FilledButton(children: Children, #[prop(optional)] class: String) -> impl IntoView {
+pub fn FilledButton(children: Children, #[prop(optional)] class: String, #[prop(optional)] fill: Option<String>) -> impl IntoView {
     let (btn, set_btn) = signal(false);
+    let (hover, set_hover) = signal(false);
+    let fill = fill.unwrap_or("#2b7fff".to_string());
+    let fill = fill.clone();
+
+    let (gradient, set_gradient) = signal(format!("linear-gradient(to bottom, {}, {})", fill, secondary_col(&fill[..], &SecondaryColorType::Dark)));
+    
+    let secondary_fill_color  = secondary_col(&fill, &SecondaryColorType::Dark);
+    let secondary_fill_color_clone = secondary_fill_color.clone();
+
+    let fill_clone = fill.clone();
+    let fill_color = Memo::new(move |_| {
+        if btn.get() {
+            fill.to_string()
+        } else if hover.get() {
+            secondary_fill_color.clone()
+        } else {
+            fill.to_string()
+        }
+    }); 
+
+    
+    let secondary_fill_color = Memo::new(move |_| {
+        if btn.get() {
+            secondary_fill_color_clone.to_string()
+        } else if hover.get() {
+            fill_clone.to_string()
+        } else {
+            secondary_fill_color_clone.to_string()
+        }
+    });
+
+    Effect::new(move |_| {
+        set_gradient.set(format!("linear-gradient(to bottom, {}, {})", fill_color.get(), secondary_fill_color.get()));
+    });
+
+    let on_pointer_enter = move |_| set_hover.set(true);
+    let on_pointer_leave = move |_| set_hover.set(false);
+    let on_mousedown = move |_| set_btn.set(true);
+    let on_mouseup = move |_| set_btn.set(false);
 
     view! {
-        <Button on:mousedown = move |_| { *set_btn.write() = true; } on:mouseup = move |_| { *set_btn.write() = false; } class:hover:bg-linear-to-t = move || { !btn.get() } class=format!("bg-linear-to-b from-blue-500 to-blue-700 hover: hover:bg-linear-to-t inset-sm hover:shadow-white text-white {}", class)>
+        <Button on:mousedown = on_mousedown on:mouseup = on_mouseup
+        on:mouseenter = on_pointer_enter on:mouseleave = on_pointer_leave 
+        class:hover:bg-linear-to-t = move || { !btn.get() } class=format!("bg-linear-to-b from-blue-500 to-blue-700 hover: hover:bg-linear-to-t inset-sm hover:shadow-white text-white {}", class)
+        style:background-image=move || gradient.get()>
         {children()}
         </Button>
     }
@@ -67,9 +109,6 @@ pub fn ElevatedButton(
 
     let theme_clone = theme.clone();
     let text_col_clone = text_col.clone();
-
-    let c = secondary_col(&text_col, &SecondaryColorType::Dark);
-    println!("text_col: {}", text_col);
 
     let color = Memo::new(move |_| {
         if btn.get() {
