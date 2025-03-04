@@ -280,9 +280,6 @@
   .w-3\/4 {
     width: calc(3/4 * 100%);
   }
-  .w-10\/12 {
-    width: calc(10/12 * 100%);
-  }
   .w-\[3\.75rem\] {
     width: 3.75rem;
   }
@@ -294,6 +291,9 @@
   }
   .w-screen {
     width: 100vw;
+  }
+  .min-w-full {
+    min-width: 100%;
   }
   .grow {
     flex-grow: 1;
@@ -398,9 +398,6 @@
   .to-blue-700 {
     --tw-gradient-to: var(--color-blue-700);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-  .object-cover {
-    object-fit: cover;
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
