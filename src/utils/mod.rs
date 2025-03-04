@@ -1,14 +1,14 @@
 use nalgebra::{Matrix3, Vector3};
 
 #[derive(Clone)]
-pub enum SecondaryColorType {
+pub enum Tone {
     Light,
     Dark,
 }
 
-impl std::default::Default for SecondaryColorType {
+impl std::default::Default for Tone {
     fn default() -> Self {
-        SecondaryColorType::Light
+        Tone::Light
     }
 }
 
@@ -151,14 +151,14 @@ pub fn oklab_to_srgb(l: f64, a: f64, b: f64) -> (u8, u8, u8) {
     (lrgb_to_srgb(r), lrgb_to_srgb(g), lrgb_to_srgb(b))
 }
 
-pub fn l_contrast(lightness: f64, ratio: f64, c_type: &SecondaryColorType) -> f64 {
+pub fn l_contrast(lightness: f64, ratio: f64, c_type: &Tone) -> f64 {
     match c_type {
-        SecondaryColorType::Light => clamp(ratio * lightness + 0.1, 0.0, 1.0),
-        SecondaryColorType::Dark => clamp((lightness - 0.1) / ratio, 0.0, 1.0),
+        Tone::Light => clamp(ratio * lightness + 0.1, 0.0, 1.0),
+        Tone::Dark => clamp((lightness - 0.1) / ratio, 0.0, 1.0),
     }
 }
 
-pub fn secondary_col(hex_color: &str, contrast_type: &SecondaryColorType) -> String {
+pub fn secondary_col(hex_color: &str, contrast_type: &Tone) -> String {
     let (r, g, b) = css_to_rgb(hex_color);
     let (l, a, b) = srgb_to_oklab(r, g, b);
     let l = l_contrast(l, 3.0, contrast_type);
@@ -166,7 +166,7 @@ pub fn secondary_col(hex_color: &str, contrast_type: &SecondaryColorType) -> Str
     format!("#{:02x}{:02x}{:02x}", r, g, b)
 }
 
-pub fn tone (color: &String, ratio: f64, direction: &SecondaryColorType ) -> String {
+pub fn tone (color: &String, ratio: f64, direction: &Tone ) -> String {
     let (r, g, b) = css_to_rgb(&color[..]);
     let (l, a, b) = srgb_to_oklab(r, g, b);
     let l = l_contrast(l, ratio,&direction );
