@@ -31,7 +31,7 @@ pub fn Card(
     });
 
     view! {
-      <div class={move || format!("relative flex flex-col items-start overflow-clip  gap-y-2 w-10/12 h-auto rounded-2xl pb-8 mx-auto  {}", class)} style:background-color=move || bg.get() style:color=move || bg2.get() style:box-shadow={move || format!("{}px {}px {}px {}, -{}px {}px {}px {}", elevation * 3.0, elevation * 4.0, elevation * 3.0, bg2.get(), elevation * 3.0, elevation * 4.0, elevation * 3.0, bg2.get())}
+      <div class={move || format!("relative flex flex-col items-start overflow-clip  gap-y-2 w-full h-auto rounded-2xl pb-8 mx-auto  {}", class)} style:background-color=move || bg.get() style:color=move || bg2.get() style:box-shadow={move || format!("{}px {}px {}px {}, -{}px {}px {}px {}", elevation * 3.0, elevation * 4.0, elevation * 3.0, bg2.get(), elevation * 3.0, elevation * 4.0, elevation * 3.0, bg2.get())}
       style:fill = {move || bg2.get()} style:stroke = {move || bg.get()}
       >
       <div>{children()}</div>
