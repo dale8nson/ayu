@@ -277,14 +277,17 @@
   .min-h-screen {
     min-height: 100vh;
   }
-  .w-3\/4 {
-    width: calc(3/4 * 100%);
+  .\!w-\[6\.5rem\] {
+    width: 6.5rem !important;
   }
   .w-\[3\.75rem\] {
     width: 3.75rem;
   }
   .w-auto {
     width: auto;
+  }
+  .w-fit {
+    width: fit-content;
   }
   .w-full {
     width: 100%;

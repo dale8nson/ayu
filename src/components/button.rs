@@ -4,7 +4,7 @@ use leptos::prelude::*;
 #[component]
 pub fn Button(children: Children, #[prop(optional)] class: String) -> impl IntoView {
     view! {
-        <button class=format!("flex flex-row justify-center items-center w-3/4 h-[4rem] text-base text-center font-normal py-2 px-2 rounded-[2rem] cursor-pointer hover:cursor-pointer aspect-video {}", class)>
+        <button class=format!("flex flex-row justify-center items-center w-auto h-[4rem] text-base text-center font-normal py-2 px-2 rounded-[2rem] cursor-pointer hover:cursor-pointer aspect-video {}", class)>
             {children()}
         </button>
     }
@@ -163,7 +163,7 @@ pub fn TextButton(children: Children, #[prop(optional)] class: Option<String>) -
     let (btn, set_btn) = signal(false);
     let class = class.unwrap_or("".to_string());
     view! {
-        <button on:mousedown = move |_| set_btn.set(true) on:mouseup = move |_| set_btn.set(false) class:hover:text-white = move || !btn.get() class=format!("text-center w-3/4 h-[4rem] text-base font-normal text-[#aaa] hover:border-white hover:text-white cursor-pointer hover:cursor-pointer {}", class)>
+        <button on:mousedown = move |_| set_btn.set(true) on:mouseup = move |_| set_btn.set(false) class:hover:text-white = move || !btn.get() class=format!("text-center w-fit p-4 h-[4rem] text-base font-normal text-[#aaa] hover:border-white hover:text-white cursor-pointer hover:cursor-pointer {}", class)>
         {children()}
         </button>
     }

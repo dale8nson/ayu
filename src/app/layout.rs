@@ -12,12 +12,12 @@ pub fn Layout() -> impl IntoView {
       <Stylesheet id="leptos" href="/styles/tailwind.css" />
       <div class="font-roboto text-white text-5xl font-bold grid grid-cols-3 gap-16 p-8 w-full">
       <h1 class="col-span-3 text-5xl tracking-wider font-light">"Buttons"</h1>
-        <GradientFillButton>"Gradient"</GradientFillButton>
-        <FilledButton class="w-3/4".to_string() fill="#77aa77".to_string() contrast=1.75>"Filled"</FilledButton>
-        <OutlinedButton contrast=1.0>"Outlined"</OutlinedButton>
-        <ElevatedButton text_col="#ffffff".to_string() theme=Tone::Dark>"Elevated"</ElevatedButton>
-        <ElevatedButton text_col="#ee0000".to_string() theme=Tone::Dark>"Toned"</ElevatedButton>
-        <TextButton class="border-dashed border-[1px]".to_string()>"Text"</TextButton>
+        <GradientFillButton class="mx-auto".to_string()>"Gradient"</GradientFillButton>
+        <FilledButton class="w-auto mx-auto".to_string() fill="#77aa77".to_string() contrast=1.75>"Filled"</FilledButton>
+        <OutlinedButton class="mx-auto".to_string() contrast=1.0>"Outlined"</OutlinedButton>
+        <ElevatedButton class="mx-auto".to_string() text_col="#ffffff".to_string() theme=Tone::Dark>"Elevated"</ElevatedButton>
+        <ElevatedButton class="mx-auto".to_string() text_col="#ee0000".to_string() theme=Tone::Dark>"Toned"</ElevatedButton>
+        <TextButton class="!w-[6.5rem] border-dashed border-[1px] mx-auto".to_string()>"Text"</TextButton>
         <div/>
         <h1 class="col-span-3 text-5xl font-light tracking-wider">"Cards"</h1>
         <Card class="col-span-1".to_string() color="#ffffdd".to_string() elevation={1.0} theme={CardTheme::Light}>
