@@ -199,14 +199,8 @@
   .-z-10 {
     z-index: calc(10 * -1);
   }
-  .-z-50 {
-    z-index: calc(50 * -1);
-  }
   .z-20 {
     z-index: 20;
-  }
-  .z-\[-5\] {
-    z-index: -5;
   }
   .z-\[10\] {
     z-index: 10;
@@ -237,6 +231,9 @@
   }
   .m-0 {
     margin: calc(var(--spacing) * 0);
+  }
+  .m-auto {
+    margin: auto;
   }
   .mx-auto {
     margin-inline: auto;
@@ -280,8 +277,11 @@
   .\!w-\[6\.5rem\] {
     width: 6.5rem !important;
   }
-  .w-\[3\.75rem\] {
-    width: 3.75rem;
+  .w-\[4rem\] {
+    width: 4rem;
+  }
+  .w-\[5\.5rem\] {
+    width: 5.5rem;
   }
   .w-auto {
     width: auto;
@@ -300,10 +300,6 @@
   }
   .grow {
     flex-grow: 1;
-  }
-  .translate-y-3 {
-    --tw-translate-y: calc(var(--spacing) * 3);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
@@ -328,9 +324,6 @@
   }
   .items-start {
     align-items: flex-start;
-  }
-  .justify-around {
-    justify-content: space-around;
   }
   .justify-between {
     justify-content: space-between;
@@ -420,9 +413,6 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
-  }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
@@ -479,6 +469,9 @@
   .tracking-wider {
     --tw-tracking: var(--tracking-wider);
     letter-spacing: var(--tracking-wider);
+  }
+  .text-nowrap {
+    text-wrap: nowrap;
   }
   .text-\[\#aaa\] {
     color: #aaa;
@@ -587,21 +580,6 @@
 }
 .shadow-aaa {
   --tw-shadow-color: rgb(175, 175, 175);
-}
-@property --tw-translate-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
 }
 @property --tw-rotate-x {
   syntax: "*";

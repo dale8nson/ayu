@@ -102,11 +102,11 @@ pub fn CardMenu(
     let (open, set_open) = signal(false);
 
     view! {
-      <div class=format!("relative flex flex-col items-end justify-around gap-y-2 w-full h-full translate-y-3 {}", class)>
+      <div class=format!("relative flex flex-col items-end justify-center gap-y-2 w-[5.5rem] h-full {}", class)>
         <ExportButton class="relative z-[10]".to_string() on:click=move |_| set_open.set(!open.get()) color=color.clone() contrast=contrast />
-        <div class="relative -z-50 p-4 w-full h-fit rounded-lg transition-layout duration-50 shadow" style:background-color={tone(&color.clone(), contrast, &Tone::Dark)} style:visibility=move || if open.get() {"visible"} else { "hidden" }
-        style:transform=move || if open.get() { "translateY(0)".to_string()} else { "translateY(-5rem)".to_string()}>
-        <ul class="text-xl relative z-[-5]">
+        <div class="absolute p-4 w-fit h-fit rounded-lg transition-layout duration-50 shadow" style:background-color={tone(&color.clone(), contrast, &Tone::Dark)} style:visibility=move || if open.get() {"visible"} else { "hidden" }
+        style:transform=move || if open.get() { "translateY(8rem)".to_string()} else { "translateY(-5rem)".to_string()}>
+        <ul class="text-xl relative w-full h-full text-nowrap">
         {children()}
         </ul>
         </div>
